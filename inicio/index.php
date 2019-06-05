@@ -33,18 +33,20 @@
 			        <h3>Lista de alumnos ingresados al CC</h3>
 			   </div>	
 			   <div class="contenido borde sombra">
-			        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam obcaecati eum, sit accusantium, quis recusandae consequatur tempora ipsam quidem odio cum ab rerum? Officia quis ad, fugit ut eligendi aliquid!
-					Dolorum ea doloremque ex. Quam perspiciatis doloremque, iure illum expedita earum ut eaque autem hic reiciendis quasi quaerat deleniti, corrupti maxime doloribus tempore assumenda illo necessitatibus labore, veritatis dolores voluptatibus.
-					Reprehenderit harum itaque ab veritatis non sint repellat ipsam. Obcaecati, perferendis dolor veritatis quas odio voluptates? Possimus aliquam sapiente eligendi sed cupiditate, minima tempora veritatis delectus quibusdam, libero architecto vitae?
-					Est sint laborum eligendi magnam praesentium, incidunt optio quaerat, veniam ad aspernatur non beatae quibusdam, doloribus voluptate repellat qui odio recusandae quis a! Officiis sapiente odio molestiae eius dicta a!
-					Tempore atque dicta excepturi, nobis sit ipsam dolorum saepe, corrupti a dolores eos officiis voluptatibus vel ipsum consequuntur minima asperiores cupiditate dignissimos doloremque ex odio? Nam inventore dicta sapiente aut?
-					Unde voluptatum vel tenetur, distinctio voluptatibus omnis illo quam voluptate, officia exercitationem architecto. Enim cum tempore libero velit animi? Iusto nihil recusandae ratione incidunt excepturi nam voluptatibus voluptas ea reiciendis.
-					Sequi omnis tenetur quisquam. Eligendi similique autem nesciunt obcaecati veniam, possimus consectetur minima deleniti, atque odio expedita laborum earum praesentium, quidem tenetur. Non, soluta odio nobis possimus perferendis reprehenderit. Rerum.
-					Ab molestiae accusantium itaque labore. Adipisci dicta soluta perferendis omnis facilis maxime recusandae in, asperiores sint repellat obcaecati a. Nam aut earum, harum corporis voluptatem minima et inventore ipsam deserunt.
-					Modi dolores exercitationem ea laborum animi officiis atque similique eum blanditiis, adipisci, aspernatur quisquam praesentium doloribus dicta repellat? Cum exercitationem molestiae temporibus provident soluta facere non recusandae accusamus omnis ratione.
-					Quos, porro suscipit quam voluptatibus itaque dignissimos impedit eius maxime incidunt amet possimus tempore qui ducimus doloremque, libero, debitis cupiditate accusamus corporis? Nobis veniam, nihil error minus voluptate repudiandae nisi?
-					Voluptatum laborum exercitationem laudantium dignissimos repellendus velit consequuntur rerum optio, quam atque facere commodi voluptatem at doloribus molestiae explicabo enim eaque ea fugit alias. Harum fugiat numquam quibusdam deserunt nisi?
-					Reiciendis laudantium laboriosam hic iste magni accusantium neque dolorem dignissimos dolor quis nemo temporibus ad eos, nesciunt maxime quidem voluptas itaque architecto eaque fuga perferendis vel aspernatur et repellendus. Minus.</p>
+			   		<div class="panel panel-primary">
+					  <!-- Default panel contents -->
+					  <div class="panel-heading">Panel Titulo</div>
+					  <div class="panel-body">
+					    <p>Panel Cuerpo</p>
+					  </div>
+					</div>
+					<div class="row">
+					  <div class="col-xs-6 col-md-3">
+					    <a href="#" class="thumbnail">
+					      <img src="..." alt="...">
+					    </a>
+					  </div>
+					</div>
 			   </div>	
 
 			</div>			
