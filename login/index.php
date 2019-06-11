@@ -12,10 +12,54 @@
 	<link rel="stylesheet" type="text/css" href="../plugins/alertifyjs/css/themes/bootstrap.css">
 
 	    <!-- bootstrap-toggle-master -->
-			<link href="../plugins/bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
+	<link href="../plugins/bootstrap-toggle-master/css/bootstrap-toggle.css" rel="stylesheet">
     <link href="../plugins/bootstrap-toggle-master/stylesheet.css" rel="stylesheet">
 </head>
 <body class="login">
+	<div class="container" style="display:none" id="registroEntrada">
+		<div class="row justify-content-md-center">
+			<div class="col-md-auto login-box borde sombra">
+				<h3 class="text-center titulo" id="titulo_registro">Registro de Entrada</h3>
+				<h3 class="text-center titulo" id="titulo_datos" style="display:none" >Datos Alumno</h3>
+				<hr>
+				<form id="frmRegistro">
+					<div class="form-row">
+						<div class="col-md-12">
+							<label for="" class="colorLetra">Matricula:</label>
+					          <div class="form-group has-feedback salto">
+					            <input type="text" id="matricula" placeholder="Matricula" class="form-control " autofocus onchange="verificar(this.value)">
+					            <span class="glyphicon glyphicon-user form-control-feedback"></span>
+					          </div>
+						</div>
+					</div>
+				</form>
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<button class="btn btn-login  btn-flat  pull-left" onclick="regresar()" id="btn_regresar"><i class="fas fa-undo" ></i> Regresar</button>
+						</div>
+					</div><!-- /.col -->
+				</div>
+				<div class="container-fluid" id="datos_alumno">
+					<div class="row">
+						<div class="col-md-12">
+							<center>
+								<img src="" alt="" id="imagen" width="200px" height="200px">
+							</center>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<input type="text" id="id_alumno" class="form-control">
+							<input type="text" id="nombre" class="form-control">
+							<input type="text" id="carrera" class="form-control">
+							<input type="text" id="matricula" class="form-control">
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
 	<div class="container" style="display:none" id="cuerpo">
 		<div class="row justify-content-md-center">
 			<div class="col-md-auto login-box borde sombra">
@@ -41,7 +85,9 @@
 					<div class="container-fluid">
 						<div class="row">
 							<div class="col-md-12">
-								<input id="chkContra"  onchange='evaluarCheck(this.value)' data-on="Si" data-off="No" type="checkbox" checked data-toggle="toggle" data-size="mini" value='no'><label class="colorLetra"> &nbsp; Cambiar Contraseña</label>
+								<a class="btn btn-login btn-flat pull-left" id="btnRegistrar" onclick="mostrar()"><i class="fas fa-address-card"></i> Registrar Entrada</a>
+								&nbsp;
+								<input id="chkContra"  onchange='evaluarCheck(this.value)' data-on="Si" data-off="No" type="checkbox" checked data-toggle="toggle" data-size="mini" value='no'><label class="colorLetra"> &nbsp; Cambiar Contra</label>
 								<button type="submit" class="btn btn-login  btn-flat  pull-right" id="btnIngresar">
 									<i class="fas fa-lock-open"></i>
 									Ingresar
@@ -53,7 +99,6 @@
 			</div>			
 		</div>
 	</div>
-
 	<div class="container" style="display:none" id="cambiarContra">
 		<div class="row justify-content-md-center">
 			<div class="col-md-auto login-box borde sombra">
@@ -130,6 +175,74 @@
 			}
 		}else{
 			$('#btnActualizar').attr('disabled', 'disabled');
+		}
+	}
+	function mostrar() {
+		$('#cuerpo').hide();
+		$("#registroEntrada").fadeIn('low');
+	}
+	function regresar(){
+		$('#registroEntrada').hide();
+		$("#cuerpo").fadeIn('low');	
+	}
+	// function registrar(matricula) {
+	// 	$.ajax({
+	//         url:"registrar_entrada.php",
+	//         type:"POST",
+	//         dateType:"html",
+	//         data: {'matricula':matricula},
+	//         success:function(respuesta){
+	//         	if(respuesta == "ok"){
+	//         		alertify.set('notifier','position', 'bottom-right');
+	//         		alertify.success('Se ha registrado la contraseña' );
+	//         		preCarga(6000,2);
+    //              setInterval(entrando, 2000);
+	//         	}else{
+	//         		alertify.set('notifier','position', 'bottom-right');
+	//         		alertify.error('No existe la matricula' );
+	//         	}
+	//         // llenarLista();
+	//         },
+	//         error:function(xhr,status){
+	//             alert(xhr);
+	//         },
+
+	//     });
+	// }
+	function verificar(matricula){
+		var matricula = matricula.trim();
+		if(matricula == ""){
+			alertify.set('notifier','position', 'bottom-right');
+		    alertify.error('Verifica Campos');
+		    $('#matricula').val("");
+		}else{
+			$.ajax({
+		        url:"verificar_martricula.php",
+		        type:"POST",
+		        dateType:"html",
+		        data: {'matricula':matricula},
+		        success:function(respuesta){
+		        	if(respuesta != "no"){
+		        		$('#btn_regresar').hide();
+		        		$('#frmRegistro').hide();
+		        		$('#titulo_registro').hide();
+		        		$('#titulo_datos').show();
+		        		var array = eval(respuesta);
+		        		$('#id_alumno').val(array[0]);
+		        		$('#nombre').val(array[1]);
+		        		$('#matricula').val(array[2]);
+		        		$('#carrera').val(array[3]);
+		        		$('#imagen').attr('src', array[4]);
+		        	}else{
+		        		alertify.set('notifier','position', 'bottom-right');
+		        		alertify.error('No existe la matricula' );
+		        	}
+		        },
+		        error:function(xhr,status){
+		            alert(xhr);
+		        },
+		    });
+		    return false;
 		}
 	}
 

@@ -210,4 +210,4 @@ function imprimir(){
                 // console.log('cancelado')
               }
     ).set('labels',{ok:'Generar PDF',cancel:'Cancelar'}); 
-  }
+}
