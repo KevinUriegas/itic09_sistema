@@ -20,7 +20,7 @@
 		<div class="row justify-content-md-center">
 			<div class="col-md-auto login-box borde sombra">
 				<h3 class="text-center titulo" id="titulo_registro">Registro de Entrada</h3>
-				<h3 class="text-center titulo" id="titulo_datos" style="display:none" >Datos Alumno</h3>
+				<h3 class="text-center titulo" id="titulo_datos" style="display:none" >Datos del Alumno</h3>
 				<hr>
 				<form id="frmRegistro">
 					<div class="form-row">
@@ -33,14 +33,14 @@
 						</div>
 					</div>
 				</form>
-				<div class="container-fluid">
+				<div class="container-fluid" id="btn_regresar">
 					<div class="row">
 						<div class="col-md-12">
-							<button class="btn btn-login  btn-flat  pull-left" onclick="regresar()" id="btn_regresar"><i class="fas fa-undo" ></i> Regresar</button>
+							<button class="btn btn-login  btn-flat  pull-left" onclick="regresar()"><i class="fas fa-undo" ></i> Regresar</button>
 						</div>
 					</div><!-- /.col -->
 				</div>
-				<div class="container-fluid" id="datos_alumno">
+				<div class="container-fluid" id="datos_alumno" style="display: none;">
 					<div class="row">
 						<div class="col-md-12">
 							<center>
@@ -50,10 +50,13 @@
 					</div>
 					<div class="row">
 						<div class="col-md-12">
-							<input type="text" id="id_alumno" class="form-control">
-							<input type="text" id="nombre" class="form-control">
-							<input type="text" id="carrera" class="form-control">
-							<input type="text" id="matricula" class="form-control">
+							<center>
+								<br>
+								<label id="nombre"></label>
+								<br>
+								<label id="carrera"></label>
+								<input type="" id="id_alumno" class="form-control">
+							</center>
 						</div>
 					</div>
 				</div>
@@ -163,6 +166,7 @@
 	};	
 	$('#chkContra').bootstrapToggle('off');
 	$('#chkContra').val('no');
+
 	function verificar_pass(){
 		var pass1 = $('#vContra1').val();
 		var pass2 = $('#vContra2').val();
@@ -185,30 +189,33 @@
 		$('#registroEntrada').hide();
 		$("#cuerpo").fadeIn('low');	
 	}
-	// function registrar(matricula) {
-	// 	$.ajax({
-	//         url:"registrar_entrada.php",
-	//         type:"POST",
-	//         dateType:"html",
-	//         data: {'matricula':matricula},
-	//         success:function(respuesta){
-	//         	if(respuesta == "ok"){
-	//         		alertify.set('notifier','position', 'bottom-right');
-	//         		alertify.success('Se ha registrado la contraseña' );
-	//         		preCarga(6000,2);
-    //              setInterval(entrando, 2000);
-	//         	}else{
-	//         		alertify.set('notifier','position', 'bottom-right');
-	//         		alertify.error('No existe la matricula' );
-	//         	}
-	//         // llenarLista();
-	//         },
-	//         error:function(xhr,status){
-	//             alert(xhr);
-	//         },
+	function registrar() {
+		alert("funciona");
+		// var id_alumno = $('#id_alumno').val();
+		// var matricula = $('#matricula').val();
+		// $.ajax({
+	 //        url:"registrar_entrada.php",
+	 //        type:"POST",
+	 //        dateType:"html",
+	 //        data: {'matricula':matricula,'id_alumno':id_alumno},
+	 //        success:function(respuesta){
+	 //        	if(respuesta == "ok"){
+	 //        		alertify.set('notifier','position', 'bottom-right');
+	 //        		alertify.success('Se ha registrado la contraseña' );
+	 //        		// preCarga(6000,2);
+  //          //       	setInterval(regresar, 2000);
+	 //        	}else{
+	 //        		alertify.set('notifier','position', 'bottom-right');
+	 //        		alertify.error('Ya registro Salida' );
+	 //        	}
+	 //        // llenarLista();
+	 //        },
+	 //        error:function(xhr,status){
+	 //            alert(xhr);
+	 //        },
 
-	//     });
-	// }
+	 //    });
+	}
 	function verificar(matricula){
 		var matricula = matricula.trim();
 		if(matricula == ""){
@@ -223,19 +230,28 @@
 		        data: {'matricula':matricula},
 		        success:function(respuesta){
 		        	if(respuesta != "no"){
+		        		$('#datos_alumno').show();
+
 		        		$('#btn_regresar').hide();
 		        		$('#frmRegistro').hide();
 		        		$('#titulo_registro').hide();
 		        		$('#titulo_datos').show();
+		        		 
 		        		var array = eval(respuesta);
 		        		$('#id_alumno').val(array[0]);
-		        		$('#nombre').val(array[1]);
+		        		$('#nombre').html(array[1]);
 		        		$('#matricula').val(array[2]);
-		        		$('#carrera').val(array[3]);
+		        		$('#carrera').html(array[3]);
 		        		$('#imagen').attr('src', array[4]);
+
+		        		$('#matricula').val("");
+		        		// preCarga(6000,2);
+                 		// setInterval(registrar, 6000);
 		        	}else{
 		        		alertify.set('notifier','position', 'bottom-right');
 		        		alertify.error('No existe la matricula' );
+		        		$('#matricula').val("");
+		        		$('#matricula').focus();
 		        	}
 		        },
 		        error:function(xhr,status){
@@ -258,13 +274,12 @@
 	        	if(respuesta == "ok"){
 	        		alertify.set('notifier','position', 'bottom-right');
 	        		alertify.success('Se ha actualizado la contraseña' );
-	        		preCarga(2000,2);
-                    setInterval(entrando, 2000);
+	        		// preCarga(2000,2);
+                    setInterval(insertar, 6000);
 	        	}else{
 	        		alertify.set('notifier','position', 'bottom-right');
 	        		alertify.error('La Contraseña es igual a la anterior' );
 	        	}
-	        // llenarLista();
 	        },
 	        error:function(xhr,status){
 	            alert(xhr);

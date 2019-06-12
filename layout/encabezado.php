@@ -22,7 +22,7 @@
 				</li>
 				<li class="list-unstyled">
 					<p  class="user fondo">
-						Kevin Alexis Uriegas Lopez
+						<?php echo $_SESSION["nCompleto"];?>
 					</p>
 				</li>
 			</ul>

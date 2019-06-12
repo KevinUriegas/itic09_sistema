@@ -150,3 +150,22 @@ function status(concecutivo,id){
         },
     });
 }
+function imprimir(){
+  var titular = "Lista de Carreras";
+  var mensaje = "¿Deseas generar un archivo con PDF oon la lista de carreras activas";
+  // var link    = "pdfListaPersona.php?id="+idPersona+"&datos="+datos;
+  var link    = "pdfListaCarreras.php?";
+
+  alertify.confirm('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
+  alertify.confirm(
+      titular, 
+      mensaje, 
+      function(){ 
+          window.open(link,'_blank');
+          }, 
+      function(){ 
+              alertify.error('Cancelar') ; 
+              // console.log('cancelado')
+            }
+  ).set('labels',{ok:'Generar PDF',cancel:'Cancelar'}); 
+}

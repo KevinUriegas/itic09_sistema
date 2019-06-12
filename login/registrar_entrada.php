@@ -9,6 +9,13 @@
 	$cadena = mysql_query("SELECT id FROM registros WHERE matricula = '$matricula' AND fecha_ingreso = '$fecha'",$conexion);
 	$existe = mysql_num_rows($cadena);
 
+	if($existe == 0){
+		$cadena1 = "INSERT INTO registros (id_alumno,matricula,fecha_ingreso,hora_ingreso,activo)
+					VALUES('')"
+	}else{
+
+	}
+
 	if($row_contra[0] == $pass){
 		echo "repetida";
 	}else{
