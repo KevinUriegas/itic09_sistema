@@ -26,7 +26,12 @@
 	$hora=date ("H:i:s");
 
 	mysql_query("SET NAMES utf8");
-	$insertar = mysql_query("INSERT INTO personas 
+
+	$cadena_verificar = mysql_query("SELECT id_persona FROM personas
+	WHERE nombre = '$nombre' AND ap_paterno = '$paterno' AND ap_materno = '$materno'",$conexion);
+	$existe = mysql_num_rows($cadena_verificar);
+	if($existe == 0){
+		$insertar = mysql_query("INSERT INTO personas 
 									(
 									nombre,
 									ap_paterno,
@@ -59,4 +64,8 @@
 									'1'
 									)
 								",$conexion)or die(mysql_error());
+		echo "ok";
+	}else{
+		echo "duplicado";
+	}
 ?>

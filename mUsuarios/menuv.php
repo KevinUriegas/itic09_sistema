@@ -8,7 +8,7 @@
 			</a>
 		</li>
 		<li class="list-unstyled">
-			<a href="" id="mnuB" class="menuInicio">
+			<a href="#" id="mnuB"  onclick="imprimir();" class="menuInicio">
 				<i class="far fa-file-alt"></i> Reportes 
 			</a>
 		</li >

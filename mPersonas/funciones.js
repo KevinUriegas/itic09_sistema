@@ -61,11 +61,15 @@ $("#frmAlta").submit(function(e){
             'tipo':tipo
         },
         success:function(respuesta){
-            
-        alertify.set('notifier','position', 'bottom-right');
-        alertify.success('Se ha guardado el registro' );
-        $("#frmAlta")[0].reset();
-        $("#nombre").focus();
+            if(respuesta == "ok"){
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.success('Se ha guardado el registro' );
+                $("#frmAlta")[0].reset();
+                $("#nombre").focus();
+            }else{
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.error('Registro Duplicado');
+            }
         // llenarLista();
         },
         error:function(xhr,status){
@@ -129,12 +133,16 @@ $("#frmActuliza").submit(function(e){
             'ide':ide
         },
         success:function(respuesta){
-
-        alertify.set('notifier','position', 'bottom-right');
-        alertify.success('Se ha actualizado el registro' );
-        $("#frmActuliza")[0].reset();
-        $("#modalEditar").modal("hide");
-        llenar_lista();
+            if(respuesta == "ok"){
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.success('Se ha actualizado el registro' );
+                $("#frmActuliza")[0].reset();
+                $("#modalEditar").modal("hide");
+                llenar_lista();
+            }else{
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.error('Registro Duplicado');
+            }
         },
         error:function(xhr,status){
             alert(xhr);
