@@ -11,7 +11,7 @@
 					</a>
 				</li>
 				<li class="list-unstyled">
-					<a href="#" class="color borde">
+					<a href="#" class="color borde" onclick="cambiar_contra()">
 						<i class="fas fa-unlock-alt"></i>
 					</a>
 				</li>
