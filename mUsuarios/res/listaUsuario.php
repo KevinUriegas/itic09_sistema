@@ -126,12 +126,13 @@ $fechaEspanol=fechaCastellano($fecha);
     <col style="width: 10%">
     <col style="width: 10%">
     <col style="width: 10%">
+    <col style="width: 10%">
     <!-- defino el ancho de la tabla -->
     <tr border="0">
-        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+        <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
     </tr>
     <tr >
-        <td  colspan="9" class="encabezado">
+        <td  colspan="10" class="encabezado">
             LISTA DE USUARIOS
         </td>
     </tr> 
@@ -142,7 +143,7 @@ $fechaEspanol=fechaCastellano($fecha);
         <td  colspan="5" class="titular">
             Nombre
         </td>
-        <td  colspan="3" class="titular">
+        <td  colspan="4" class="titular">
             Usuario
         </td>
     </tr>
@@ -159,12 +160,12 @@ $fechaEspanol=fechaCastellano($fecha);
                     <?php echo $n; ?>
                 </p>
             </td>
-            <td  colspan="3" class="borde">
+            <td  colspan="5" class="borde">
                 <p class="parrafo">
                     <?php echo $nombre; ?>
                 </p>
             </td>
-            <td  colspan="3" class="borde">
+            <td  colspan="4" class="borde">
                 <p class="parrafo">
                     <?php echo $usuario; ?>
                 </p>

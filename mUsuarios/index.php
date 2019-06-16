@@ -80,19 +80,13 @@
 								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-6">
 									<div class="form-group">
 										<label for="nombreE">Nombre de la Persona:</label>
-										<select id="nombreE" class="select2" style="width:100%"></select>
+										<select id="nombreE" class="select2" style="width:100%" disabled="disabled"></select>
 									</div>
 								</div>
-								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-6">
 									<div class="form-group">
 										<label for="usuarioE">Nombre Usuario:</label>
 										<input type="text" id="usuarioE" class="form-control " required="" placeholder="Escribe el apellido">
-									</div>
-								</div>
-								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">
-									<div class="form-group">
-										<label for="contraE">Contraseña:</label>
-										<input type="text" id="contraE" class="form-control " required="" placeholder="Escribe el apellido">
 									</div>
 								</div>								
 								<hr class="linea">

@@ -14,8 +14,7 @@ $consulta = mysql_query("SELECT
 						FROM
 							usuarios
 						RIGHT JOIN personas ON usuarios.id_persona = personas.id_persona
-						WHERE
-							personas.activo = 1",$conexion)or die(mysql_error());
+						WHERE personas.activo = 1 AND personas.tipo_persona = 'trabajador'",$conexion)or die(mysql_error());
  ?>
  	<option value="0">Seleccione...</option>
  <?php 

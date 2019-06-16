@@ -2,7 +2,7 @@
 //se manda llamar la conexion
 include("../conexion/conexion.php");
 
-$idUser    = $_POST["idUser"];
+$idUser    = $_POST["idUsuario"];
 
 $fecha=date("Y-m-d"); 
 $hora=date ("H:i:s");

@@ -39,18 +39,6 @@ $("#frmAlta").submit(function(e){
     var usuario   = $("#usuario").val();
     var contra    = $("#contra").val();
     //Validaciones
-//     if(noControl.length<5){
-//        alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
-
-//        alertify.alert()
-//        .setting({
-//            'title':'Información',
-//            'label':'Salir',
-//            'message': 'El numero de control debe contener al menos 5 caracteres.' ,
-//            'onok': function(){ alertify.message('Gracias !');}
-//        }).show();
-//        return false;       
-//    }
    if(idPersona==0){
        alertify.dialog('alert').set({transition:'zoom',message: 'Transition effect: zoom'}).show();
 
@@ -71,18 +59,22 @@ $("#frmAlta").submit(function(e){
            type:"POST",
            dateType:"html",
            data:{
-                   'usuario':usuario,
-                   'idPersona':idPersona,
-                   'contra':contra
+                 'usuario':usuario,
+                 'idPersona':idPersona,
+                 'contra':contra
                 },
            success:function(respuesta){
-             
-           alertify.set('notifier','position', 'bottom-right');
-           alertify.success('Se ha guardado el registro' );
-           $("#frmAlta")[0].reset();
-           llenar_persona();
-           $("#alta").hide();
-           llenar_lista();
+            if(respuesta == "ok"){
+              alertify.set('notifier','position', 'bottom-right');
+              alertify.success('Se ha guardado el registro' );
+              $("#frmAlta")[0].reset();
+              llenar_persona();
+              $("#alta").hide();
+              llenar_lista();
+            }else{
+              alertify.set('notifier','position', 'bottom-right');
+              alertify.error('Nombre de usuario ya existe' );
+            }
            },
            error:function(xhr,status){
                alert(xhr);
@@ -92,7 +84,7 @@ $("#frmAlta").submit(function(e){
        return false;
 });
 
-function abrirModalEditar(idPersona,usuario,contra,idE){
+function abrirModalEditar(idPersona,usuario,idE){
   
     $("#frmActuliza")[0].reset();
 
@@ -100,7 +92,6 @@ function abrirModalEditar(idPersona,usuario,contra,idE){
 
    $("#idE").val(idE);
    $("#usuarioE").val(usuario);
-   $("#contraE").val(contra);
 
    $("#modalEditar").modal("show");
 
@@ -155,12 +146,16 @@ $("#frmActuliza").submit(function(e){
                    'ide':ide
                 },
            success:function(respuesta){
-
-           alertify.set('notifier','position', 'bottom-right');
-           alertify.success('Se ha actualizado el registro' );
-           $("#frmActuliza")[0].reset();
-           $("#modalEditar").modal("hide");
-           llenar_lista();
+            if(respuesta == "ok"){
+              alertify.set('notifier','position', 'bottom-right');
+              alertify.success('Se ha actualizado el registro' );
+              $("#frmActuliza")[0].reset();
+              $("#modalEditar").modal("hide");
+              llenar_lista();
+            }else{
+              alertify.set('notifier','position', 'bottom-right');
+              alertify.error('Nombre de usuario ya existe' );
+            }
            },
            error:function(xhr,status){
                alert(xhr);
@@ -260,7 +255,7 @@ function llenar_personaA(idPersona)
 }
 function restaurar_contra(idUsuario){
     $.ajax({
-        url : 'restaurar.php',
+        url : 'restaurarContra.php',
         data : {'idUsuario':idUsuario},
         type : 'POST',
         dataType : 'html',

@@ -78,7 +78,6 @@
 						onclick="abrirModalEditar(
 												'<?php echo $id_persona ?>',
 												'<?php echo $nomUsuario ?>',
-												'<?php echo $contra ?>',
 												'<?php echo $idUsuario ?>'
 												);">
 						<i class="far fa-edit"></i>

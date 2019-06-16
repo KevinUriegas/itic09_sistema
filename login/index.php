@@ -274,8 +274,8 @@
 	        	if(respuesta == "ok"){
 	        		alertify.set('notifier','position', 'bottom-right');
 	        		alertify.success('Se ha actualizado la contraseña' );
-	        		// preCarga(2000,2);
-                    setInterval(insertar, 6000);
+	        		preCarga(2000,2);
+                    setInterval(entrando, 6000);
 	        	}else{
 	        		alertify.set('notifier','position', 'bottom-right');
 	        		alertify.error('La Contraseña es igual a la anterior' );
