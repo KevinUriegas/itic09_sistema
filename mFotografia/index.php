@@ -1,5 +1,5 @@
 <?php 
-include'../conexion/conexion.php';
+include('../sesiones/verificar_sesion.php');
 // Variables de configuración
 $titulo="Cargar fotografía del alumno";
 $opcionMenu="A";
