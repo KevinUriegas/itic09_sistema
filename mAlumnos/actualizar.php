@@ -17,8 +17,9 @@ $hora=date ("H:i:s");
 
 mysql_query("SET NAMES utf8");
 $cadena_verificar = mysql_query("SELECT id_persona FROM alumnos
-	WHERE no_control = '$noControl' AND id_alumno != '$ide'",$conexion);
+	WHERE no_control = '$noControl'",$conexion);
 $existe = mysql_num_rows($cadena_verificar);
+
 if($existe == 0){
 	$insertar = mysql_query("UPDATE alumnos SET
 							no_control='$noControl',

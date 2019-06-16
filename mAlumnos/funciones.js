@@ -172,12 +172,16 @@ $("#frmActulizaA").submit(function(e){
                    'ide':ide
                 },
            success:function(respuesta){
-
-           alertify.set('notifier','position', 'bottom-right');
-           alertify.success('Se ha actualizado el registro' );
-           $("#frmActulizaA")[0].reset();
-           $("#modalEditarAlumnos").modal("hide");
-           llenar_lista();
+               if (respuesta == "ok"){
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.success('Se ha actualizado el registro' );
+                $("#frmActulizaA")[0].reset();
+                $("#modalEditarAlumnos").modal("hide");
+                llenar_lista();
+               }else{
+                alertify.set('notifier','position', 'bottom-right');
+                alertify.error('Matricula Duplicada' );
+               }
            },
            error:function(xhr,status){
                alert(xhr);
@@ -313,7 +317,7 @@ function llenar_carreraA(idCarrera)
 }
 function imprimir(){
   var titular = "Lista de Alumnos";
-  var mensaje = "¿Deseas generar un archivo con PDF oon la lista de alumnos activos";
+  var mensaje = "¿Deseas generar un archivo con PDF con la lista de alumnos activos";
   // var link    = "pdfListaPersona.php?id="+idPersona+"&datos="+datos;
   var link    = "pdfListaAlumnos.php?";
 

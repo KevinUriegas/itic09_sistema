@@ -150,10 +150,10 @@ $fechaEspanol=fechaCastellano($fecha);
         <td  colspan="3" class="titular">
             Nombre
         </td>
-        <td  colspan="3" class="titular">
+        <td  colspan="2" class="titular">
             Matricula
         </td>
-        <td  colspan="3" class="titular">
+        <td  colspan="4" class="titular">
             Carrera
         </td>
     </tr>
@@ -176,12 +176,12 @@ $fechaEspanol=fechaCastellano($fecha);
                     <?php echo $nombre; ?>
                 </p>
             </td>
-            <td  colspan="3" class="borde">
+            <td  colspan="2" class="borde">
                 <p class="parrafo">
                     <?php echo $matricula; ?>
                 </p>
             </td>
-            <td  colspan="3" class="borde">
+            <td  colspan="4" class="borde">
                 <p class="parrafo">
                     <?php echo $carrera; ?>
                 </p>
