@@ -20,6 +20,7 @@ function ver_alta(){
     preCarga(800,4);
     $("#lista").slideUp('low');
     $("#alta").slideDown('low');
+    $("#frmAlta")[0].reset();
     $("#nombre").focus();
 }
 
@@ -66,6 +67,8 @@ $("#frmAlta").submit(function(e){
                 alertify.success('Se ha guardado el registro' );
                 $("#frmAlta")[0].reset();
                 $("#nombre").focus();
+                $("#alta").hide();
+                llenar_lista();
             }else{
                 alertify.set('notifier','position', 'bottom-right');
                 alertify.error('Registro Duplicado');

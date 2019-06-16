@@ -1,5 +1,5 @@
 <?php 
-	include'../conexion/conexion.php';
+	include('../sesiones/verificar_sesion.php');
 	// Variables de configuración
 	$titulo="Catálago de Alumnos";
 	$opcionMenu="A";
@@ -84,7 +84,7 @@
 								<div class="col-xs-12 col-sm-4 col-md-4 col-lg-6">
 									<div class="form-group">
 										<label for="nombreE">Nombre del Alumno:</label>
-										<select name="nombreE" id="nombreE" class="select2" style="width:100%"></select>
+										<select name="nombreE" id="nombreE" class="select2" style="width:100%" disabled="disabled"></select>
 									</div>
 								</div>
 								<div class="col-xs-6 col-sm-4 col-md-4 col-lg-3">

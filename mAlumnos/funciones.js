@@ -20,6 +20,7 @@ function ver_alta(){
    // preCarga(800,4);
    $("#lista").slideUp('low');
    $("#alta").slideDown('low');
+   $("#noControl").val("");
    $("#noControl").focus();
 }
 
@@ -88,14 +89,18 @@ $("#frmAlta").submit(function(e){
                    'idCarrera':idCarrera
                 },
            success:function(respuesta){
-             
-           alertify.set('notifier','position', 'bottom-right');
-           alertify.success('Se ha guardado el registro' );
-           $("#frmAlta")[0].reset();
-           llenar_persona();
-           llenar_carrera();
-           $("#alta").hide();
-           llenar_lista();
+            if(respuesta == "ok"){
+              alertify.set('notifier','position', 'bottom-right');
+              alertify.success('Se ha guardado el registro' );
+              $("#frmAlta")[0].reset();
+              llenar_persona();
+              llenar_carrera();
+              $("#alta").hide();
+              llenar_lista();
+            }else{
+              alertify.set('notifier','position', 'bottom-right');
+              alertify.error('Matricula Duplicada' );
+            }
            },
            error:function(xhr,status){
                alert(xhr);

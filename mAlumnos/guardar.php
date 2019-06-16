@@ -1,6 +1,8 @@
 <?php
 //se manda llamar la conexion
-include("../conexion/conexion.php");
+include("../sesiones/verificar_sesion.php");
+$id_usuario =  $_SESSION["idUsuario"];
+
 $idPersona = $_POST["idPersona"];
 $idCarrera = $_POST["idCarrera"];
 $noControl = $_POST["noControl"];
@@ -9,7 +11,11 @@ $noControl = trim($noControl);
 $fecha=date("Y-m-d"); 
 $hora=date ("H:i:s");
 mysql_query("SET NAMES utf8");
- $insertar = mysql_query("INSERT INTO alumnos 
+$cadena_verificar = mysql_query("SELECT id_persona FROM alumnos
+	WHERE no_control = '$noControl'",$conexion);
+	$existe = mysql_num_rows($cadena_verificar);
+	if($existe == 0){
+ 		$insertar = mysql_query("INSERT INTO alumnos 
  								(
  								id_persona,
  								id_carrera,
@@ -24,10 +30,14 @@ mysql_query("SET NAMES utf8");
  								'$idPersona',
  								'$idCarrera',
  								'$noControl',
- 								'1',
+ 								'$id_usuario',
  								'$fecha',
  								'$hora',
  								'1'
 								)
 							",$conexion)or die(mysql_error());
+ 		echo "ok";
+	}else{
+		echo "duplicado";
+	}
 ?>

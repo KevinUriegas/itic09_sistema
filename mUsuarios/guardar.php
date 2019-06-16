@@ -1,6 +1,7 @@
 <?php
 	//se manda llamar la conexion
-	include("../conexion/conexion.php");
+	include("../sesiones/verificar_sesion.php");
+	$id_usuario =  $_SESSION["idUsuario"];
 
 	$idPersona = $_POST["idPersona"];
 	$usuario   = $_POST["usuario"];
@@ -34,7 +35,7 @@
 									'$usuario',
 									'$contra',
 									'$idPersona',
-									'1',
+									'$id_usuario',
 									'$fecha',
 									'$hora',
 									'1',

@@ -1,4 +1,5 @@
 <?php
+include "../conexion/conexion.php";
 //iniciamos la sesi�n 
 session_name("loginUsuario"); 
 session_start(); 

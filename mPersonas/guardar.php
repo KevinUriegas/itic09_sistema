@@ -1,6 +1,7 @@
 <?php
 	//se manda llamar la conexion
-	include("../conexion/conexion.php");
+	include("../sesiones/verificar_sesion.php");
+	$id_usuario =  $_SESSION["idUsuario"];
 
 	$nombre    = $_POST["nombre"];
 	$paterno   = $_POST["paterno"];
@@ -58,7 +59,7 @@
 									'$fecha_nac',
 									'$correo',
 									'$tipo',
-									'1',
+									'$id_usuario',
 									'$fecha',
 									'$hora',
 									'1'

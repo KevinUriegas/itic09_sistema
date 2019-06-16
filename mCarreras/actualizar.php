@@ -1,6 +1,7 @@
 <?php
 	//se manda llamar la conexion
-	include("../conexion/conexion.php");
+	include("../sesiones/verificar_sesion.php");
+	$id_usuario =  $_SESSION["idUsuario"];
 
 	$nombre      = $_POST["nombre"];
 	$abreviatura = $_POST["abreviatura"];
@@ -18,7 +19,7 @@
 								abreviatura='$abreviatura',
 								fecha_registro='$fecha',
 								hora_registro='$hora',
-								id_registro='1'
+								id_registro='$id_usuario'
 							WHERE id_carrera='$ide'",$conexion)or die(mysql_error());
 
 ?>

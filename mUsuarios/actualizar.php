@@ -1,6 +1,7 @@
 <?php
 	//se manda llamar la conexion
-	include("../conexion/conexion.php");
+	include("../sesiones/verificar_sesion.php");
+	$id_usuario =  $_SESSION["idUsuario"];
 
 	$usuario = $_POST["usuario"];
 	$ide     = $_POST["ide"];
@@ -19,7 +20,7 @@
 								contra='$contra',
 								fecha_registro='$fecha',
 								hora_registro='$hora',
-								id_registro='1'
+								id_registro='$id_usuario'
 							WHERE id_usuario='$ide'",$conexion)or die(mysql_error());
 		echo "ok";
 	}else{

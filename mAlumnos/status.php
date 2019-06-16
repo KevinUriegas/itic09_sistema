@@ -1,7 +1,7 @@
 <?php
 	//se manda llamar la conexion
-	include("../conexion/conexion.php");
-	date_default_timezone_set('America/Monterrey');
+	include("../sesiones/verificar_sesion.php");
+	$id_usuario =  $_SESSION["idUsuario"];
 
 	$valor = $_POST["valor"];
 	$id    = $_POST["id"];
@@ -16,6 +16,6 @@
 								activo='$valor',
 								fecha_registro='$fecha',
 								hora_registro='$hora',
-								id_registro='1'
+								id_registro='$id_usuario'
 							WHERE id_alumno='$id'",$conexion)or die(mysql_error());
 ?>

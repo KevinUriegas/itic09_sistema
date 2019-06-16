@@ -55,4 +55,6 @@ $contraMD5 = md5($contra);
     $_SESSION["idUsuario"]  = $row[0]; //ID del usuario
     $_SESSION["idPersona"]  = $row[7]; //ID de persona
     $_SESSION["primeraVez"] = $row[8]; //Primera vez
+
+    $id_usuario =  $_SESSION["idUsuario"];
 ?> 
