@@ -33,20 +33,7 @@
 			        <h3>Lista de alumnos ingresados al CC</h3>
 			   </div>	
 			   <div class="contenido borde sombra">
-			   		<div class="panel panel-primary">
-					  <!-- Default panel contents -->
-					  <div class="panel-heading">Panel Titulo</div>
-					  <div class="panel-body">
-					    <p>Panel Cuerpo</p>
-					  </div>
-					</div>
-					<div class="row">
-					  <div class="col-xs-6 col-md-3">
-					    <a href="#" class="thumbnail">
-					      <img src="..." alt="...">
-					    </a>
-					  </div>
-					</div>
+			   		
 			   </div>	
 
 			</div>			

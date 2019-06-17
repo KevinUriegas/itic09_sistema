@@ -20,9 +20,6 @@
 							<a href="../mFotografia/index.php"><i class="fas fa-camera-retro"></i> Subir Foto</a>
 						</li>
 						<li class="list-unstyled">
-							<a href="#"><i class="fas fa-chart-bar"></i> Reportes y Estadisticas</a>
-						</li>
-						<li class="list-unstyled">
 							<a href="#" onclick="salir();"><i class="fas fa-sign-out-alt"></i> Salir</a>
 						</li>
 					</ul>

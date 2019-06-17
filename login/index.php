@@ -231,6 +231,9 @@
 
 						var texto = array[1]+', '+array[5];
 
+						alertify.set('notifier','position', 'bottom-right');
+		    			alertify.success(array[5]);
+
 						hablar(texto);
 
 						$('#matricula').val("");
@@ -251,54 +254,6 @@
 		e.preventDefault();
 		return false;
 	});
-	// function verificar(matricula){
-	// 	var matricula = matricula.trim();
-	// 	if(matricula == ""){
-	// 		alertify.set('notifier','position', 'bottom-right');
-	// 	    alertify.error('Verifica Campos');
-	// 	    $('#matricula').val("");
-	// 	}else{
-	// 		$.ajax({
-	// 	        url:"verificar_martricula.php",
-	// 	        type:"POST",
-	// 	        dateType:"html",
-	// 	        data: {'matricula':matricula},
-	// 	        success:function(respuesta){
-	// 	        	if(respuesta != "no"){
-	// 	        		$('#datos_alumno').show();
-
-	// 	        		$('#btn_regresar').hide();
-	// 	        		$('#frmRegistro').hide();
-	// 	        		$('#titulo_registro').hide();
-	// 	        		$('#titulo_datos').show();
-		        		 
-	// 	        		var array = eval(respuesta);
-	// 	        		$('#id_alumno').val(array[0]);
-	// 	        		$('#nombre').html(array[1]);
-	// 	        		$('#matricula').val(array[2]);
-	// 	        		$('#carrera').html(array[3]);
-	// 					$('#imagen').attr('src', array[4]);
-
-	// 					var texto = array[1]+', '+array[5];
-
-	// 					hablar(texto);
-
-	// 					$('#matricula').val("");
-	// 					demo();
-	// 	        	}else{
-	// 	        		alertify.set('notifier','position', 'bottom-right');
-	// 	        		alertify.error('No existe la matricula' );
-	// 	        		$('#matricula').val("");
-	// 	        		$('#matricula').focus();
-	// 	        	}
-	// 	        },
-	// 	        error:function(xhr,status){
-	// 	            alert(xhr);
-	// 	        },
-	// 	    });
-	// 	    return false;
-	// 	}
-	// }
 
 	function sleep(ms) {
 		return new Promise(resolve => setTimeout(resolve, ms));
@@ -309,12 +264,6 @@
 		await sleep(6000);
 		console.log('Two seconds later, showing sleep in a loop...');
 		regresar()
-		// Sleep in loop
-		// for (let i = 0; i < 5; i++) {
-		// 	if (i === 3)
-		// 	await sleep(2000);
-		// 	console.log(i);
-		// }
 	}
 
 	$('#btnActualizar').click(function(){
