@@ -27,7 +27,7 @@
 						<div class="col-md-12">
 							<label for="" class="colorLetra">Matricula:</label>
 					          <div class="form-group has-feedback salto">
-					            <input type="text" id="matricula" placeholder="Matricula" class="form-control " autofocus onchange="verificar(this.value)">
+					            <input type="text" id="matricula" placeholder="Matricula" class="form-control " autofocus>
 					            <span class="glyphicon glyphicon-user form-control-feedback"></span>
 					          </div>
 						</div>
@@ -55,7 +55,7 @@
 								<label id="nombre"></label>
 								<br>
 								<label id="carrera"></label>
-								<input type="" id="id_alumno" class="form-control">
+								<input type="hidden" id="id_alumno" class="form-control">
 							</center>
 						</div>
 					</div>
@@ -148,6 +148,7 @@
 	<script src="../plugins/jQuery/jQuery-2.1.4.min.js"></script>
 	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script src="../plugins/Preloaders/jquery.preloaders.js"></script>
+	<script src="../plugins/voice/responsivevoice.js"></script>
 
 	<!-- alertify -->
 	<script type="text/javascript" src="../plugins/alertifyjs/alertify.js"></script>
@@ -188,35 +189,19 @@
 	function regresar(){
 		$('#registroEntrada').hide();
 		$("#cuerpo").fadeIn('low');	
-	}
-	function registrar() {
-		alert("funciona");
-		// var id_alumno = $('#id_alumno').val();
-		// var matricula = $('#matricula').val();
-		// $.ajax({
-	 //        url:"registrar_entrada.php",
-	 //        type:"POST",
-	 //        dateType:"html",
-	 //        data: {'matricula':matricula,'id_alumno':id_alumno},
-	 //        success:function(respuesta){
-	 //        	if(respuesta == "ok"){
-	 //        		alertify.set('notifier','position', 'bottom-right');
-	 //        		alertify.success('Se ha registrado la contraseña' );
-	 //        		// preCarga(6000,2);
-  //          //       	setInterval(regresar, 2000);
-	 //        	}else{
-	 //        		alertify.set('notifier','position', 'bottom-right');
-	 //        		alertify.error('Ya registro Salida' );
-	 //        	}
-	 //        // llenarLista();
-	 //        },
-	 //        error:function(xhr,status){
-	 //            alert(xhr);
-	 //        },
+		$('#matricula').val("");
 
-	 //    });
+		$('#datos_alumno').hide();
+		$('#btn_regresar').show();
+		$('#frmRegistro').show();
+		$('#titulo_registro').show();
+		$('#titulo_datos').hide();
 	}
-	function verificar(matricula){
+	function hablar(texto){
+		responsiveVoice.speak(texto,"Spanish Female"); 
+	}
+	$("#frmRegistro").submit(function(e){
+		var matricula = $("#matricula").val();
 		var matricula = matricula.trim();
 		if(matricula == ""){
 			alertify.set('notifier','position', 'bottom-right');
@@ -242,11 +227,14 @@
 		        		$('#nombre').html(array[1]);
 		        		$('#matricula').val(array[2]);
 		        		$('#carrera').html(array[3]);
-		        		$('#imagen').attr('src', array[4]);
+						$('#imagen').attr('src', array[4]);
 
-		        		$('#matricula').val("");
-		        		// preCarga(6000,2);
-                 		// setInterval(registrar, 6000);
+						var texto = array[1]+', '+array[5];
+
+						hablar(texto);
+
+						$('#matricula').val("");
+						demo();
 		        	}else{
 		        		alertify.set('notifier','position', 'bottom-right');
 		        		alertify.error('No existe la matricula' );
@@ -260,6 +248,73 @@
 		    });
 		    return false;
 		}
+		e.preventDefault();
+		return false;
+	});
+	// function verificar(matricula){
+	// 	var matricula = matricula.trim();
+	// 	if(matricula == ""){
+	// 		alertify.set('notifier','position', 'bottom-right');
+	// 	    alertify.error('Verifica Campos');
+	// 	    $('#matricula').val("");
+	// 	}else{
+	// 		$.ajax({
+	// 	        url:"verificar_martricula.php",
+	// 	        type:"POST",
+	// 	        dateType:"html",
+	// 	        data: {'matricula':matricula},
+	// 	        success:function(respuesta){
+	// 	        	if(respuesta != "no"){
+	// 	        		$('#datos_alumno').show();
+
+	// 	        		$('#btn_regresar').hide();
+	// 	        		$('#frmRegistro').hide();
+	// 	        		$('#titulo_registro').hide();
+	// 	        		$('#titulo_datos').show();
+		        		 
+	// 	        		var array = eval(respuesta);
+	// 	        		$('#id_alumno').val(array[0]);
+	// 	        		$('#nombre').html(array[1]);
+	// 	        		$('#matricula').val(array[2]);
+	// 	        		$('#carrera').html(array[3]);
+	// 					$('#imagen').attr('src', array[4]);
+
+	// 					var texto = array[1]+', '+array[5];
+
+	// 					hablar(texto);
+
+	// 					$('#matricula').val("");
+	// 					demo();
+	// 	        	}else{
+	// 	        		alertify.set('notifier','position', 'bottom-right');
+	// 	        		alertify.error('No existe la matricula' );
+	// 	        		$('#matricula').val("");
+	// 	        		$('#matricula').focus();
+	// 	        	}
+	// 	        },
+	// 	        error:function(xhr,status){
+	// 	            alert(xhr);
+	// 	        },
+	// 	    });
+	// 	    return false;
+	// 	}
+	// }
+
+	function sleep(ms) {
+		return new Promise(resolve => setTimeout(resolve, ms));
+	}
+
+	async function demo() {
+		console.log('Taking a break...');
+		await sleep(6000);
+		console.log('Two seconds later, showing sleep in a loop...');
+		regresar()
+		// Sleep in loop
+		// for (let i = 0; i < 5; i++) {
+		// 	if (i === 3)
+		// 	await sleep(2000);
+		// 	console.log(i);
+		// }
 	}
 
 	$('#btnActualizar').click(function(){

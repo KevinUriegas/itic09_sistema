@@ -42,7 +42,23 @@
 				$imagen='../images/mujer.jpg';
 			}
 		}
-		$array = array($row[0],$row[1],$row[2],$row[3],$imagen);
+		$cadena_entrada = mysql_query("SELECT id_registro, fecha_ingreso, hora_ingreso 
+		FROM registros WHERE id_alumno = '$row[0]' AND fecha_ingreso = '$fecha' AND activo = '1'",$conexion);
+		$existe_entrada = mysql_num_rows($cadena_entrada);
+		
+		if($existe_entrada == 0){
+			$cadena_insertar = "INSERT INTO registros (id_alumno, matricula, fecha_ingreso, hora_ingreso, activo,
+				fecha_actualiza, hora_actualiza)
+				VALUES('$row[0]','$matricula','$fecha','$hora','1','$fecha','$hora')";
+			$texto = "Bienvenido(a)";
+		}else{
+			$cadena_insertar = "UPDATE registros SET fecha_salida = '$fecha', hora_salida = '$hora',
+			 fecha_actualiza = '$fecha', hora_actualiza = '$hora', activo = '2'";
+			$texto = "Vuelva Pronto";
+		}
+		$consulta = mysql_query($cadena_insertar,$conexion);
+
+		$array = array($row[0],$row[1],$row[2],$row[3],$imagen,$texto);
 		echo json_encode($array);
 	}else{
 		echo "no";
